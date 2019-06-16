@@ -1,0 +1,56 @@
+<Window>:
+	orientation: 'vertical'
+	canvas.before:
+		Color:
+			rgba: 0.1, 0.1, 0.8, 1.0
+		Rectangle:
+			size: self.size
+			pos: self.pos
+
+
+	Action_Bar:
+
+	GerenciadorTela:
+
+<GerenciadorTela>:
+	Principal:
+		name: 'tela_principal'
+
+<Principal>:
+	orientation: 'vertical'
+	id: tela_principal
+	
+	
+	canvas:
+		Color:
+			rgba: 0.8, 0.8, 0.8, 1.0
+		Rectangle:
+			size: self.size
+			pos: self.pos
+
+	Label:
+		text: 'APP'
+		font_size: self.parent.width * 0.2
+
+<Partida>:
+
+<MeuTime>:
+
+<Action_Bar>:
+	id: actionbar
+	size_hint: None, None
+	width: self.parent.width
+	height: self.parent.height * 0.10
+	canvas:
+		Color:
+			rgba: 0.9, 0.9, 0.9, 1.0 
+		Rectangle:
+			size: self.size
+			pos: self.pos
+			source: "img/action_bar.png"
+	
+<Acionar_Paleta>:
+	size_hint_x: None
+	width: self.parent.width - 0.4
+	size_hint_y: None
+	height: self.width	

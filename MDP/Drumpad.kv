@@ -1,0 +1,249 @@
+<Janela>:
+	
+
+<Gerenciador_Tela>:
+	Tocar:
+		name: "tocar"
+
+<Tocar>:
+	name: "tocar"
+	
+	Label:
+		id: banco_atual
+		text: 'BancoA'
+		opacity: 0
+
+	BoxLayout:
+		id: box_full
+		canvas.before:
+			Color:
+				rgba: 0.9, 0.9, 0.9, 1.0
+			Rectangle:
+				size: self.size
+				pos: self.pos
+
+		BoxLayout:
+			id: box_efeitos
+			orientation: 'vertical'
+			size_hint_x: None
+			width: self.parent.width * 0.4
+			Infos:		
+				Label:
+					id: banco_atual
+					text: 'BancoA'
+					size_hint_y: None
+					height: self.parent.height * 0.3
+					opacity: 1
+					
+			GridLayout:
+				id: box_bancos
+				cols: 4
+				rows: 2
+				size_hint_x:
+				width: self.parent.width
+				
+				PadBanco:
+					text: 'A'
+					on_press: root.BancoA()
+								
+				PadBanco:
+					text: 'B'
+					on_press: root.BancoB()
+					
+				PadBanco:
+					text: 'C'
+					on_press: root.BancoC()
+					
+				PadBanco:
+					text: 'D'
+					on_press: root.BancoD()
+				
+				#PadBanco:
+				#	text: 'E'
+				#	on_press: root.BancoB()
+						
+				Slid:
+					id: slid1
+					value: 1
+					min: 0.50
+					max: 1
+					set: 0.10
+
+				Slid:
+					id: slid2
+					min: 0
+					max: 1
+					set: 1
+					value: 1
+
+				Efeitos:
+
+				Efeitos2:
+					id: ef2
+
+		BoxLayout:
+			id: box_pads
+			orientation: 'vertical'
+			size_hint_x: None
+			width: self.parent.width - root.ids.box_efeitos.width		
+
+			#BoxLayout:
+			#	Pad:
+			#		id: 1
+			#	Pad:
+			#		id: 2
+			#	Pad:
+			#		id: 3
+			#	Pad:
+			#		id: 4
+			#BoxLayout:
+			#	Pad:
+			#		id: 5
+			#	Pad:
+			#		id: 6
+			#	Pad:
+			#		id: 7
+			#	Pad:
+			#		id: 8
+			#BoxLayout:
+			#	Pad:
+			#		id: 9
+			#	Pad:
+			#		id: 10
+			#	Pad:
+			#		id: 11
+			#	Pad:
+			#		id: 12
+			#BoxLayout:
+			#	Pad:
+			#		id: 13
+			#	Pad:
+			#		id: 14
+			#	Pad:
+			#		id: 15
+			#	Pad:
+			#		id: 16
+<Pad>:
+	size_hint_x: None
+	width: self.parent.width * 0.25
+	size_hint_y: None
+	height: self.parent.height
+	on_press: self.playsound(self.id)
+	
+<PadBanco>:
+	size_hint_x: None
+	width: self.parent.width * 0.25
+	pos_hint: {'center_x': 0.5}
+	size_hint_y: None
+	height: self.parent.height * 0.25
+
+<Infos>:
+	size_hint_x: None
+	width: self.parent.width
+	size_hint_y: None
+	height: self.parent.height * 0.3
+	
+	canvas.before:
+		Color:
+			rgba: 0.2, 0.2, 0.9, 1.0
+		Rectangle:
+			size: self.size
+			pos: self.pos
+<Slid>:
+	orientation: 'vertical'
+	size_hint_x: None
+	width: self.parent.width * 0.2
+	size_hint_y: None
+	height: self.parent.height * 0.75
+	min: 0.50
+	max: 1
+	set: 0.10
+
+<Efeitos>:
+	orientation: 'vertical'
+	Button:
+		id: efeito_1
+		size_hint_x: None
+		width: self.parent.width * 0.8
+		size_hint_y: None
+		height: self.parent.height * 0.2
+	Label:
+		text: 'Effect 1'
+		size_hint_x: None
+		width: self.parent.width * 0.8
+		size_hint_y: None
+		height: self.parent.height * 0.1
+		color: (0, 0, 0, 1)
+	Button:
+		id: efeito_2
+		size_hint_x: None
+		width: self.parent.width * 0.8
+		size_hint_y: None
+		height: self.parent.height * 0.2
+	Label:
+		text: 'Effect 2'
+		size_hint_x: None
+		width: self.parent.width * 0.8
+		size_hint_y: None
+		height: self.parent.height * 0.1
+		color: (0, 0, 0, 1)
+	Button:
+		id: efeito_3
+		size_hint_x: None
+		width: self.parent.width * 0.8
+		size_hint_y: None
+		height: self.parent.height * 0.2
+		on_press: app.root.get_screen('tocar').stopsound()
+	Label:
+		text: 'Stop'
+		size_hint_x: None
+		width: self.parent.width * 0.8
+		size_hint_y: None
+		height: self.parent.height * 0.1
+		color: (0, 0, 0, 1)
+
+<Efeitos2>:
+	orientation: 'vertical'
+	Button:
+		id: noterepeat
+		text: 'Disabled'
+		size_hint_x: None
+		width: self.parent.width * 0.8
+		size_hint_y: None
+		height: self.parent.height * 0.2
+		on_press: self.text = '1/16'
+		on_release: self.text = 'Disabled'
+	Label:
+		text: 'Note Repeat'
+		size_hint_x: None
+		width: self.parent.width * 0.8
+		size_hint_y: None
+		height: self.parent.height * 0.1
+		color: (0, 0, 0, 1)
+	Button:
+		id: efeito_2
+		size_hint_x: None
+		width: self.parent.width * 0.8
+		size_hint_y: None
+		height: self.parent.height * 0.2
+	Label:
+		text: 'Effect 2'
+		size_hint_x: None
+		width: self.parent.width * 0.8
+		size_hint_y: None
+		height: self.parent.height * 0.1
+		color: (0, 0, 0, 1)
+	Button:
+		id: efeito_3
+		size_hint_x: None
+		width: self.parent.width * 0.8
+		size_hint_y: None
+		height: self.parent.height * 0.2
+		on_press: app.root.get_screen('tocar').stopsound()
+	Label:
+		text: 'Stop'
+		size_hint_x: None
+		width: self.parent.width * 0.8
+		size_hint_y: None
+		height: self.parent.height * 0.1
+		color: (0, 0, 0, 1)

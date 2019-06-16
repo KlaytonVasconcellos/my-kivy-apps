@@ -1,0 +1,8 @@
+title=KApp
+author=Klayton
+orientation= portrait
+
+klaytontkd@gmail.com
+
+suporte@socialapp.com
+suporte123
